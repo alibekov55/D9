@@ -1,0 +1,36 @@
+{% extends 'main/layout.html' %}
+
+{% block title %} Post {% endblock title %}
+
+{% block content %}
+<table>
+    <thead>
+        <th>
+            Name
+        </th>
+        <th>
+            Category
+        </th>
+        <th>
+            Price
+        </th>
+        <th>
+            Quantity
+        </th>
+    </thead>
+    <tr>
+        <td>
+            {{ post.name|title }}
+        </td>
+        <td>
+            {{ post.category.name|title }}
+        </td>
+        <td>
+            {{ post.price }}
+        </td>
+        <td>
+            {{ post.quantity }}
+        </td>
+    </tr>
+</table>
+{% endblock content %}

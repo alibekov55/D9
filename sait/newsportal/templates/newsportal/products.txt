@@ -1,0 +1,50 @@
+{% extends 'main/layout.html' %}
+{% load custom_filters %}
+{% block title %} Product {% endblock title %}
+{% block content %}
+    <h1>Все Продукты</h1>
+    <h3>{{ time_now }}</h3>
+<hr>
+    {% if Products %}
+
+<!-- Перед таблицей добавим форму для поиска -->
+<!--<form method="GET">
+    {{ filter.form }} --><!-- Форму от фильтров за нас сделает Django. А вот кнопку, увы придётся делать самому -->
+    <!--<input type="submit" value="Найти">
+</form>-->
+
+<table>
+    <tr>
+        <td>
+            Name
+        </td>
+        <td>
+            Category
+        </td>
+        <td>
+            Price
+        </td>
+        <td>
+            Quantity
+        </td>
+    </tr>
+    {% for product in products %} <!--filter.qs-->  <!-- поменяем products на filter.qs, т. к. теперь мы забираем уже отобранную по каким-то параметрам информацию -->
+    <tr>
+        <td>
+            {{ product.name|title|censor }}
+        </td>
+        <td>
+            {{ product.category.name|title|censor }}
+        </td>
+        <td>
+            {{ product.price|censor }}
+        </td>
+        <td>
+            {{ product.quantity|censor }}
+        </td>
+            </tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <h2>Новостей нет!</h2>
+{% endif %}
